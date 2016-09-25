@@ -4,9 +4,8 @@
 
 /*****************************************************************************************************************
  *
- * CUiBase: 控件类父类。实现控件类的背景颜色、画刷、背景位图的设定以及控件窗口的绘制。控件子类无需自己处理WM_PAINT、
- *          WM_ERASEBKGND消息，而只需要继承父类的virtual void Draw(CDC* pDC, CRect rcCli)，并将子类窗口绘制在pDC上
- *          即可。
+ * CUiBase: This is the Library Base Class, You don't want to process WM_PAINT & WM_ERASEBKGND message. The Control
+ *          Class rewrited 'virtual void Draw(CDC* pDC, CRect rcCli)' by itself.
  *
  *****************************************************************************************************************/
 class CUiBase : public CWnd
@@ -20,22 +19,22 @@ public:
 public:
 	virtual  BOOL  Create(CWnd* pParent, UINT nId, RECT rect=CRect(0, 0, 0, 0), DWORD dwStyle=WS_CHILD|WS_VISIBLE); 
 
-	virtual  DWORD GetCtrlStyle();                                //实现子控件自身特殊属性的设定和获取
+	virtual  DWORD GetCtrlStyle();         
 	virtual  void  ModifyCtrlStyle(DWORD dwRemove, DWORD dwAdd);
 
-	CDC*     GetBkDC();                    //获取背景DC，该DC为内存DC
-	COLORREF GetBkColor();                 //获取背景颜色
-	CBrush*  GetBkBrush();                 //获取背景画刷
-	void     SetBkColor(COLORREF clrBk);   //设定背景颜色
-	void     SetBkBrush(CBrush* pBrush);   //设定背景画刷
-	void     SetBkBitmap(UINT uBkBmpId, COLORREF clrMask=CLR_NONE, int nWinPosX=0, int nWinPosY=0, bool bAutoMoveWin=false);  //设定背景位图，可设置位图透明色，以及是否按照位图大小调整窗口大小
+	CDC*     GetBkDC();                    
+	COLORREF GetBkColor();                 
+	CBrush*  GetBkBrush();                 
+	void     SetBkColor(COLORREF clrBk);   
+	void     SetBkBrush(CBrush* pBrush);   
+	void     SetBkBitmap(UINT uBkBmpId, COLORREF clrMask=CLR_NONE, int nWinPosX=0, int nWinPosY=0, bool bAutoMoveWin=false);  
 
-	static   HRGN CreateRgn(UINT uBitmapId, COLORREF clrMask);     //根据指定的位图和透明色创建(不规则)区域
-	static   HRGN CreateRgn(CDC* pDC, COLORREF clrMask);           //根据制定的DC(中的绘图)和透明色创建(不规则)区域
+	static   HRGN CreateRgn(UINT uBitmapId, COLORREF clrMask);     // Create transparent rect by the bitmap
+	static   HRGN CreateRgn(CDC* pDC, COLORREF clrMask);           // Create transparent rect by the DC
 
 protected:
-	virtual  void RecalLayout();                          //继承该函数实现子控件窗口位置的重新调整
-	virtual  void Draw(CDC* pDC, CRect rcCli) = 0;        //继承该函数实现子控件窗口绘制
+	virtual  void RecalLayout();                          // rewrite this funtion to re layout when the window change size
+	virtual  void Draw(CDC* pDC, CRect rcCli) = 0;        // rewrite this function to draw the control
 	
 private:
 	void     Refresh(CDC* pDC, CRect rcCli);
