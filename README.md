@@ -1,5 +1,7 @@
 # Windows Ui Class Library
 
+This Ui Class Library is based on CWnd in VC. I hope it can easy to define the Ui of Application by yourself.
+
 ## Plan
 
 - [ ] Dialog  
