@@ -28,6 +28,8 @@ public:
 	void     SetBkColor(COLORREF clrBk);   
 	void     SetBkBrush(CBrush* pBrush);   
 	void     SetBkBitmap(UINT uBkBmpId, COLORREF clrMask=CLR_NONE, int nWinPosX=0, int nWinPosY=0, bool bAutoMoveWin=false);  
+	void     DrawBitmap(CDC* pDC, CRect rcCli, UINT uBkBmpId, COLORREF clrMask = CLR_NONE);
+	void     DrawText(CDC* pDC, CRect rcCli, CString sCaption, DWORD dwFlags = DT_SINGLELINE | DT_VCENTER | DT_LEFT | DT_END_ELLIPSIS, COLORREF clrText = CLR_NONE, CFont* pFont = NULL);
 
 	static   HRGN CreateRgn(UINT uBitmapId, COLORREF clrMask);     // Create transparent rect by the bitmap
 	static   HRGN CreateRgn(CDC* pDC, COLORREF clrMask);           // Create transparent rect by the DC

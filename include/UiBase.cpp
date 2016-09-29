@@ -76,6 +76,62 @@ void CUiBase::SetBkBitmap(UINT uBkBmpId, COLORREF clrMask, int nWinPosX, int nWi
 	}
 }
 //--------------------------------------------------------------------------------------------------------
+void CUiBase::DrawBitmap(CDC* pDC, CRect rcCli, UINT uBkBmpId, COLORREF clrMask)
+{
+	ASSERT(NULL != pDC && 0 != uBkBmpId);
+
+	if (NULL == pDC || 0 == uBkBmpId) return;
+
+	CDC MemDC;
+	CBitmap bitmap;
+
+	MemDC.CreateCompatibleDC(pDC);
+	bitmap.LoadBitmap(uBkBmpId);
+	CBitmap* pOld = MemDC.SelectObject(&bitmap);
+	if(clrMask != CLR_NONE)
+	{
+		pDC->TransparentBlt(rcCli.left, rcCli.top, rcCli.Width(), rcCli.Height(), &MemDC, rcCli.left, rcCli.top, rcCli.Width(), rcCli.Height(), clrMask);
+	}
+	else
+	{
+		pDC->BitBlt(rcCli.left, rcCli.top, rcCli.Width(), rcCli.Height(), &MemDC, rcCli.left, rcCli.top, SRCCOPY);
+	}
+	MemDC.SelectObject(pOld);
+	bitmap.DeleteObject();
+	MemDC.DeleteDC();
+
+}
+//--------------------------------------------------------------------------------------------------------
+void CUiBase::DrawText(CDC* pDC, CRect rcCli, CString sCaption, DWORD dwFlags, COLORREF clrText, CFont* pFont)
+{
+	ASSERT(NULL != pDC && !sCaption.IsEmpty());
+
+	if (NULL == pDC || sCaption.IsEmpty()) return;
+
+	CFont* pOldFont = NULL; 
+	COLORREF oldClr = CLR_NONE;
+	if(NULL != pFont)
+	{
+		pOldFont = pDC->SelectObject(pFont);
+	}
+	if(clrText != CLR_NONE)
+	{
+		oldClr = pDC->SetTextColor(clrText);
+	}
+	pDC->SetBkMode(TRANSPARENT);
+
+	pDC->DrawText(sCaption, &rcCli, dwFlags);
+
+	if(NULL != pOldFont)
+	{
+		pDC->SelectObject(pOldFont);
+	}
+	if (CLR_NONE == oldClr)
+	{
+		oldClr = pDC->SetTextColor(oldClr);
+	}
+}
+//--------------------------------------------------------------------------------------------------------
 DWORD CUiBase::GetCtrlStyle()
 {
 	return m_dwStyle;
