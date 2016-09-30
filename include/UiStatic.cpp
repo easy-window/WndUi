@@ -1,6 +1,6 @@
 ﻿#include "stdafx.h"
 #include "UiStatic.h"
-#include "UiCommon.h"
+#include "UiMessage.h"
 
 	
 UI_STATIC::UI_STATIC()

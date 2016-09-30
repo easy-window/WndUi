@@ -1,6 +1,6 @@
 ﻿#include "stdafx.h"
 #include "UiBase.h"
-#include "UiCommon.h"
+#include "UiMessage.h"
 
 IMPLEMENT_DYNAMIC(CUiBase, CWnd)
 

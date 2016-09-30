@@ -59,6 +59,7 @@ protected:
 	CFont*     m_pFont;
 	CString    m_sCaption;
 	DWORD      m_dwFlags;
+	COLORREF   m_clrBk;
 	CToolTipCtrl m_toolTip;
 
 protected:
