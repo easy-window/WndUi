@@ -11,7 +11,7 @@
 
 #define CLR_TRPT RGB(255, 0, 255)
 #define CLR_WHITE RGB(255, 255, 255)
-#define CLR_BLACK RGB(255, 255, 255)
+#define CLR_BLACK RGB(0, 0, 0)
 
 // CdemoDlg dialog
 
@@ -42,10 +42,16 @@ BOOL CDemoDlg::OnInitDialog()
 
 	SetBkBitmap(IDB_DLG_MAIN, 0xf0, CLR_TRPT);
 
-	m_stc[STC_IMG_HEAD].CreateStatic(UI_STATIC(this, STC_IMG_HEAD, CRect(0, 40, 0, 0), _T(""), IDB_STC_HEAD));
+	m_fonter.Init(m_hWnd, _T("Abril Fatface"),IDR_RT_FONT);
+
+	m_stc[STC_IMG_HEAD].CreateStatic(UI_STATIC(this, STC_IMG_HEAD, CRect(10, 40, 0, 0), _T(""), IDB_STC_HEAD));
+	m_stc[STC_TXT_TITLE].CreateStatic(UI_STATIC(this, STC_TXT_TITLE, CRect(300, 140, 600, 200), _T("This is a Demo.")));
+	m_stc[STC_TXT_TITLE].SetFont(m_fonter.GetFont(25), CLR_BLACK);
+	m_stc[STC_TXT_TITLE].ModifyCtrlStyle(ST_LEFT, ST_CENTER | ST_VCENTER);
+
 	m_btn[BTN_NORMAL_CLK].CreateButton(UI_BTN(this, BTN_NORMAL_CLK, CRect(400, 300, 0, 0), 
 		&UIBTN_IMAGE(IDB_BTN_NORMAL, IDB_BTN_HOVER, IDB_BTN_ACTIVE, IDB_BTN_DISABLE, 0, 0, 0, 0, CLR_TRPT), 
-		&UIBTN_STRING(_T("Click"), CLR_WHITE, CLR_BLACK, CLR_WHITE, CLR_WHITE, 0, 0, 0, 0, NULL)));
+		&UIBTN_STRING(_T("Click"), CLR_WHITE, CLR_BLACK, CLR_WHITE, CLR_WHITE, 0, 0, 0, 0, m_fonter.GetFont(20))));
 	m_btn[BTN_CLOSE].CreateButton(UI_BTN(this, BTN_CLOSE, CRect(590, 10, 0, 0), 
 		&UIBTN_IMAGE(IDB_BTN_NGREEN, IDB_BTN_HGREEN, IDB_BTN_HGREEN, 0, 0, 0, 0, 0, CLR_TRPT)));
 

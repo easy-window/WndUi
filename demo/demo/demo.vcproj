@@ -326,6 +326,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\include\UiFont.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\include\UiFont.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\include\UiMessage.h"
 				>
 			</File>
@@ -338,6 +346,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\res\font\font.otf"
+			>
+		</File>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>

@@ -85,6 +85,13 @@ IDB_BTN_ACTIVE          BITMAP                  "res\\ui\\btn_active.bmp"
 IDB_BTN_DISABLE         BITMAP                  "res\\ui\\btn_disable.bmp"
 IDB_BTN_NGREEN          BITMAP                  "res\\ui\\btn_green_n.bmp"
 IDB_BTN_HGREEN          BITMAP                  "res\\ui\\btn_green_h.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_FONT
+//
+
+IDR_RT_FONT             RT_FONT                 "res\\font\\font.otf"
 #endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 

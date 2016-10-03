@@ -42,6 +42,7 @@ CUiStatic::CUiStatic()
 	m_dwFlags    = DT_VCENTER | DT_CENTER | DT_EXPANDTABS | DT_NOPREFIX | DT_WORDBREAK;
 	m_clrMask    = CLR_NONE;
 	m_clrText    = CLR_NONE;
+	m_clrBk		 = CLR_NONE;
 	m_pFont      = NULL;
 	m_sCaption   = _T("");
 }

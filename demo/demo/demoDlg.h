@@ -17,7 +17,7 @@ public:
 protected:
 	typedef enum _STC_ID
 	{
-		STC_IMG_HEAD = 0,
+		STC_IMG_HEAD = 0, STC_TXT_TITLE,
 		STC_QTY,
 	};
 
@@ -45,4 +45,5 @@ protected:
 
 	CUiStatic m_stc[STC_QTY];
 	CUiButton m_btn[BTN_QTY];
+	CUiFont m_fonter;
 };
