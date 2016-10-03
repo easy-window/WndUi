@@ -4,8 +4,8 @@ This Ui Class Library is based on CWnd in VC. I hope it can easy to define the U
 
 ## Plan
 
-- [ ] Dialog  
-- [ ] Button  
+- [x] Dialog  
+- [x] Button  
 - [x] Static  
 - [ ] Edit  
 - [ ] Checkbox  

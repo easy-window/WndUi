@@ -4,5 +4,7 @@
 #include "UiMessage.h"
 #include "UiBase.h"
 #include "UiStatic.h"
+#include "UiButton.h"
+#include "UiDlg.h"
 
 #endif 
