@@ -42,7 +42,7 @@ BOOL CDemoDlg::OnInitDialog()
 
 	SetBkBitmap(IDB_DLG_MAIN, 0xf0, CLR_TRPT);
 
-	m_fonter.Init(m_hWnd, _T("Abril Fatface"),IDR_RT_FONT);
+	m_fonter.Init(m_hWnd, _T("Abril Fatface"), IDR_RT_FONT);
 
 	m_stc[STC_IMG_HEAD].CreateStatic(UI_STATIC(this, STC_IMG_HEAD, CRect(10, 40, 0, 0), _T(""), IDB_STC_HEAD));
 	m_stc[STC_TXT_TITLE].CreateStatic(UI_STATIC(this, STC_TXT_TITLE, CRect(300, 140, 600, 200), _T("This is a Demo.")));
